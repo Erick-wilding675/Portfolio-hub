@@ -1,0 +1,67 @@
+import os
+import time
+import pyautogui
+from datetime import datetime
+
+# Caminho da pasta dos dashboards
+pasta_dashes = r'C:\Users\Erick\PowerBI\Dashboards'
+
+# Arquivo de log
+log_path = os.path.join(pasta_dashes, 'log_atualizacao.txt')
+
+# Função para clicar em um botão via imagem
+def clicar_por_imagem(img, descricao, tempo_espera=2):
+    print(f'Procurando botão: {descricao}')
+    local = None
+    tentativas = 0
+    while local is None and tentativas < 5:
+        local = pyautogui.locateCenterOnScreen(img, confidence=0.8)
+        time.sleep(1)
+        tentativas += 1
+    if local:
+        pyautogui.moveTo(local)
+        pyautogui.click()
+        time.sleep(tempo_espera)
+        return True
+    else:
+        print(f'[ERRO] Não encontrou o botão "{descricao}".')
+        return False
+
+# Lista os arquivos .pbix
+arquivos_pbix = [f for f in os.listdir(pasta_dashes) if f.endswith('.pbix')]
+
+# Começa o log
+with open(log_path, 'a', encoding='utf-8') as log:
+    log.write(f'\n{"="*30}\nINÍCIO - {datetime.now()}\n')
+
+    for arquivo in arquivos_pbix:
+        caminho_completo = os.path.join(pasta_dashes, arquivo)
+        print(f"\nAbrindo: {arquivo}")
+        log.write(f"\n[{datetime.now()}] Iniciando atualização: {arquivo}\n")
+
+        try:
+            # Abre o arquivo
+            os.startfile(caminho_completo)
+            time.sleep(30)  # espera abrir
+
+            # Clica em "Atualizar"
+            if clicar_por_imagem('img_atualizar.png', 'Atualizar', tempo_espera=3):
+                log.write(f"[{datetime.now()}] Atualização iniciada com sucesso\n")
+                time.sleep(60)  # espera atualização
+
+                # Clica em "Publicar"
+                if clicar_por_imagem('img_publicar.png', 'Publicar', tempo_espera=3):
+                    log.write(f"[{datetime.now()}] Publicação realizada com sucesso\n")
+                else:
+                    log.write(f"[{datetime.now()}] ERRO ao tentar publicar\n")
+            else:
+                log.write(f"[{datetime.now()}] ERRO ao tentar atualizar\n")
+
+        except Exception as e:
+            log.write(f"[{datetime.now()}] EXCEÇÃO: {str(e)}\n")
+
+        # Fecha o Power BI
+        pyautogui.hotkey('alt', 'f4')
+        time.sleep(5)
+
+    log.write(f"\nFIM - {datetime.now()}\n{'='*30}\n")
