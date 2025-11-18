@@ -34,3 +34,14 @@ Além disso, tenho um grande foco em estudos de estatística aplicada e
 - Matemática e Estatística
 - Engenharia de IA
 - Business Intelligence
+
+---
+
+Convido-o a explorar este repositório. Cada ```Branch``` é um projeto diferente que vale a pena ser visitado. 
+
+Caso queira discutir sobre algum projeto ou tem uma ideia em mente, pode entrar em contato comigo em:
+
+* 📩 Meu e-mail: cmendeserick@gmail.com
+* 🏢 Meu LinkedIn: https://www.linkedin.com/in/erick-cardoso-mendes-493158344
+
+Agradeço a sua atenção!
