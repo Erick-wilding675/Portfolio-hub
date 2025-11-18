@@ -1,47 +1,95 @@
-# 👋 Olá! Eu sou o Erick Mendes
+# 🧠 Predição de Calvície com Regressão Logística
 
-Este é o meu repositório pessoal, encarregado de resgistrar os meus projetos-portfólio e demais informações.
-
----
-
-## 🙋‍♂️ Sobre mim
-
-Sou um entusiasta da tecnologia que gosta de transformar ideias em soluções práticas. 
-
-Profissionalmente, tenho um currículo voltado para a Ciência de Dados. Nessa área, meus maiores focos são Engenharia de Machine Learning, automações com python, análise de dados (Business Intelligence) e inovação.
-Além disso, tenho um grande foco em estudos de estatística aplicada e 
+Este projeto desenvolve um modelo de **Regressão Logística** para prever a probabilidade de um indivíduo apresentar **calvície**, utilizando variáveis biométricas e características do conjunto de dados fornecido. O notebook realiza todo o pipeline analítico: carregamento dos dados, tratamento, padronização, treinamento do modelo, avaliação e interpretação dos coeficientes (`odds ratios`).
 
 ---
 
-## ⚙️ Tecnologias que uso no dia a dia
+## 📌 Objetivos do Projeto
 
-- Python
-- Jupyter (Anaconda)
-- Oracle SQL
-- Power BI
-- Make Automations / N8N
-- Excel (Office)
-- HTML / CSS / JavaScript
-- Git & GitHub
-- Figma
+- Construir um modelo de classificação binária usando **Regressão Logística**.
+- Identificar **quais variáveis aumentam ou reduzem** o risco de calvície.
+- Avaliar o desempenho do modelo com métricas apropriadas.
+- Interpretar coeficientes via **odds ratio**, permitindo explicação clara e objetiva.
 
 ---
 
-## 🎯 Meus interesses
+## 📂 Estrutura do Projeto
 
-- Desenvolvimento com python
-- Automações low/no code
-- Matemática e Estatística
-- Engenharia de IA
-- Business Intelligence
+´´´
+📁 Predicao-Calvicie/
+├── Predição_de_Calvice-Regressao_Logistica.ipynb
+├── Base_calvice_classificacao.csv
+├── README.md
+´´´
 
 ---
 
-Convido-o a explorar este repositório. Cada ```Branch``` é um projeto diferente que vale a pena ser visitado. 
+## 🛠️ Tecnologias e Bibliotecas Utilizadas
 
-Caso queira discutir sobre algum projeto ou tem uma ideia em mente, pode entrar em contato comigo em:
+- **Python 3**
+- **Pandas**
+- **NumPy**
+- **Scikit-learn**
+  - train_test_split
+  - StandardScaler
+  - LogisticRegression
+  - Métricas de classificação
+- **Matplotlib / Seaborn**
 
-* 📩 Meu e-mail: cmendeserick@gmail.com
-* 🏢 Meu LinkedIn: https://www.linkedin.com/in/erick-cardoso-mendes-493158344
+---
 
-Agradeço a sua atenção!
+## 🧹 Etapas do Processamento
+
+### 1. Carregamento da Base de Dados  
+Leitura da base *Base_calvice_classificacao.csv*.
+
+### 2. Análise e Limpeza Inicial  
+- Identificação de valores ausentes  
+- Imputação via **mediana** nas variáveis numéricas
+
+### 3. Separação entre Features e Target  
+- Variável alvo: `Calvicie`
+
+### 4. Padronização  
+Padronização dos dados com `StandardScaler`.
+
+### 5. Treinamento do Modelo  
+- Divisão treino/teste  
+- Regressão Logística como classificador
+
+### 6. Avaliação  
+- Acurácia  
+- Matriz de confusão  
+- Métricas de classificação por classe
+
+### 7. Interpretação dos Coeficientes  
+Transformação dos coeficientes em **odds ratios** para identificar impacto das variáveis:
+
+- `odds_ratio > 1` → aumenta a chance de calvície  
+- `odds_ratio < 1` → reduz a chance de calvície
+
+---
+
+## 📊 Resultados Obtidos
+
+- **Acurácia aproximada:** ~59%  
+- **Conclusões preliminares:**  
+  O modelo oferece insights relevantes sobre as variáveis que influenciam o risco de calvície, ainda que o desempenho seja moderado — resultado comum em bases desbalanceadas.
+
+---
+
+## 🚀 Possíveis Melhorias Futuras
+
+- Ajuste do threshold para otimizar sensibilidade/especificidade  
+- Aplicação de métodos de balanceamento (ex.: **SMOTE**)  
+- Testar algoritmos como Random Forest ou Gradient Boosting  
+- Realizar engenharia de atributos  
+- Construção de API ou dashboard para disponibilizar o modelo treinado
+
+---
+
+## 📄 Sobre o Projeto
+
+Este notebook foi desenvolvido como parte de estudos de **machine learning aplicado à saúde**, com foco em classificação, pré-processamento e interpretação de modelos.
+
+---
