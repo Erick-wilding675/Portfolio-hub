@@ -15,12 +15,12 @@ Este projeto desenvolve um modelo de **Regressão Logística** para prever a pro
 
 ## 📂 Estrutura do Projeto
 
-´´´
+```
 📁 Predicao-Calvicie/
 ├── Predição_de_Calvice-Regressao_Logistica.ipynb
 ├── Base_calvice_classificacao.csv
 ├── README.md
-´´´
+```
 
 ---
 
